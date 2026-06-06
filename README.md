@@ -6,7 +6,7 @@
 
 <br>
 
-# Φ &nbsp;Automata
+# Φ - Automata
 
 <p><em>An Observatory for Complexity at the Edge of Chaos</em></p>
 
