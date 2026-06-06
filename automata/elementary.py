@@ -17,4 +17,7 @@ class ElementaryCA:
         ...
 
     def _generate_ruleset(self) -> dict:
-        ...
+        ruleset = {}
+        for i in range(8):
+            ruleset[i] = (self.rule >> i) & 1
+        return ruleset
