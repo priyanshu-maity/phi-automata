@@ -4,6 +4,9 @@ from typing import Literal
 
 class ElementaryCA:
     def __init__(self, rule: int):
+        if not (0 <= rule <= 255):
+            raise ValueError("Rule must be an integer between 0 and 255.")
+
         self.rule = rule
         self.ruleset = self._generate_ruleset()
 
