@@ -179,20 +179,9 @@ These are the open questions driving the project:
 
 ## &nbsp;Current Status
 
-> **Active Development** — Milestone 1 in progress
+This project is under active development.
 
-The first milestone is a cellular automata engine capable of simulating and visualizing rule-based systems efficiently. Subsequent milestones will introduce complexity metrics, emergence detection, and large-scale experimental analysis.
-
-<br>
-
-```
-[Milestone 1]  Simulation Engine          █░░░░░░░░░░░  in progress
-[Milestone 2]  Complexity Metrics         ░░░░░░░░░░░░  planned
-[Milestone 3]  Emergence Detection        ░░░░░░░░░░░░  planned
-[Milestone 4]  Large-Scale Experiments    ░░░░░░░░░░░░  planned
-```
-
-<br>
+The first milestone is a cellular automata engine capable of simulating and visualizing rule based systems efficiently. Subsequent milestones will introduce complexity metrics, emergence detection, and large scale experimental analysis.
 
 ---
 
