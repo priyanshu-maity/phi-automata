@@ -17,6 +17,19 @@ class ElementaryCA:
         boundary: Literal['periodic', 'fixed'] = 'fixed',
         seed: Literal['single', 'random'] = 'single',
     ) -> np.ndarray:
+        """
+        Simulate an elementary cellular automaton.
+
+        Args:
+            width: Number of cells in each generation.
+            steps: Number of generations to evolve.
+            boundary: Boundary condition ('fixed' or 'periodic').
+            seed: Initial state ('single' or 'random').
+
+        Returns:
+            A NumPy array of shape (steps + 1, width) containing the
+            complete state history, including the initial state.
+        """
 
         if width <= 0:
             raise ValueError("width must be positive")
