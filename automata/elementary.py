@@ -16,7 +16,7 @@ class ElementaryCA:
 
         self.rule = rule
         self.boundary = boundary
-        self.rule_lookup = self._generate_rule_lookup()
+        self.rule_lookup = self._generate_rule_lookup(self.rule)
         self.lambda_ = compute_lambda(self.rule)
 
     def run(self, width: int, steps: int, seed: Literal['single', 'random'] = 'single') -> NDArray:
@@ -68,9 +68,7 @@ class ElementaryCA:
         """
 
         initial_state = np.asarray(initial_state)
-
-        if initial_state.ndim != 1 or not np.all(np.isin(initial_state, [0, 1])):
-            raise ValueError("initial_state must ba a one dimensional numpy array or list with values 0 and 1")
+        self._validate_state(initial_state)
 
         history = np.empty((steps + 1, len(initial_state)), dtype=initial_state.dtype)
         history[0] = initial_state
@@ -101,9 +99,7 @@ class ElementaryCA:
         """
 
         state = np.asarray(state)
-
-        if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
-            raise ValueError("state must ba a one dimensional numpy array or list with values 0 and 1")
+        self._validate_state(state)
 
         if self.boundary == 'fixed':
             left = np.zeros_like(state)
@@ -118,9 +114,15 @@ class ElementaryCA:
         neighborhood_codes = 4 * left + 2 * state + right
         return self.rule_lookup[neighborhood_codes]
 
-    def _generate_rule_lookup(self) -> NDArray:
+    @staticmethod
+    def _generate_rule_lookup(rule: int) -> NDArray:
         rule_lookup = np.zeros(8, dtype=np.uint8)
         for i in range(8):
-            rule_lookup[i] = (self.rule >> i) & 1
+            rule_lookup[i] = (rule >> i) & 1
 
         return rule_lookup
+
+    @staticmethod
+    def _validate_state(state: NDArray) -> None:
+        if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
+            raise ValueError("state must be a one dimensional numpy array or vector containing only 0 and 1")
