@@ -6,8 +6,7 @@ def plot_evolution(
         history: NDArray,
         title: str = '',
 ) -> None:
-    plt.figure(figsize=(8, 8))
-    plt.imshow(history, cmap='binary', interpolation='nearest', aspect='auto')
+    plt.imshow(history, cmap='binary', interpolation='nearest', aspect='equal')
 
     if title:
         plt.title(title)
