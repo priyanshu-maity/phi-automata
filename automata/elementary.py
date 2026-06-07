@@ -1,5 +1,7 @@
 import numpy as np
 from numpy.typing import NDArray
+
+from collections.abc import Sequence
 from typing import Literal
 
 from metrics.lambda_parameter import compute_lambda
@@ -47,7 +49,7 @@ class ElementaryCA:
 
         return self.evolve(state, steps)
 
-    def evolve(self, initial_state: NDArray, steps: int) -> NDArray:
+    def evolve(self, initial_state: NDArray | Sequence[int], steps: int) -> NDArray:
         """
         Evolve a cellular automaton from a given initial state.
 
@@ -78,7 +80,7 @@ class ElementaryCA:
 
         return history
 
-    def step(self, state: NDArray | list) -> NDArray:
+    def step(self, state: NDArray | Sequence[int]) -> NDArray:
         """
         Compute the next generation of the cellular automaton.
 
