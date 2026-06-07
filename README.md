@@ -201,19 +201,19 @@ This project builds on ideas from multiple areas of complexity science, informat
 
 The following references were used for conceptual grounding and definitions:
 
-- Cellular Automaton - foundational model for discrete dynamical systems  
+- Cellular Automaton - foundational model for discrete dynamical systems <br>
   [Wikipedia: Cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton)
 
-- Elementary Cellular Automaton - Wolfram’s 1D rule space (Rules 0–255)  
+- Elementary Cellular Automaton - Wolfram’s 1D rule space (Rules 0–255) <br>
   [Wikipedia: Elementary cellular automaton](https://en.wikipedia.org/wiki/Elementary_cellular_automaton)
 
-- Hamming Distance - distance between two strings or vectors of equal length
+- Hamming Distance - distance between two strings or vectors of equal length <br>
   [Wikipedia: Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
 
-- Shannon Entropy - expected information content in a probability distribution
+- Shannon Entropy - expected information content in a probability distribution <br>
   [Wikipedia: Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
-- Kolmogorov Complexity - algorithmic measure of information content  
+- Kolmogorov Complexity - algorithmic measure of information content <br>
   [Wikipedia: Kolmogorov complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity)
 
 <br>
