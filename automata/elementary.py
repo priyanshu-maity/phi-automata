@@ -38,14 +38,7 @@ class ElementaryCA:
         if steps <= 0:
             raise ValueError("steps must be positive")
 
-        if seed == 'single':
-            state = np.zeros(width, dtype=np.uint8)
-            state[width // 2] = 1
-        elif seed == 'random':
-            state = np.random.randint(0, 2, size=width, dtype=np.uint8)
-        else:
-            raise ValueError("seed can be either 'single' or 'random'.")
-
+        state = self.generate_state(width=width, seed=seed)
         return self.evolve(state, steps)
 
     def evolve(self, initial_state: NDArray | Sequence[int], steps: int) -> NDArray:
@@ -114,14 +107,26 @@ class ElementaryCA:
         return self.rule_lookup[neighborhood_codes]
 
     @staticmethod
+    def generate_state(width: int, seed: Literal['single', 'random'] = 'single') -> NDArray:
+        if seed == 'single':
+            state = np.zeros(width, dtype=np.uint8)
+            state[width // 2] = 1
+        elif seed == 'random':
+            state = np.random.randint(0, 2, size=width, dtype=np.uint8)
+        else:
+            raise ValueError("seed can be either 'single' or 'random'.")
+
+        return state
+
+    @staticmethod
+    def validate_state(state: NDArray) -> None:
+        if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
+            raise ValueError("state must be a one dimensional numpy array or vector containing only 0 and 1")
+
+    @staticmethod
     def _generate_rule_lookup(rule: int) -> NDArray:
         rule_lookup = np.zeros(8, dtype=np.uint8)
         for i in range(8):
             rule_lookup[i] = (rule >> i) & 1
 
         return rule_lookup
-
-    @staticmethod
-    def _validate_state(state: NDArray) -> None:
-        if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
-            raise ValueError("state must be a one dimensional numpy array or vector containing only 0 and 1")
