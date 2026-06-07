@@ -195,6 +195,31 @@ The broader goal is to develop tools that help answer fundamental questions abou
 
 ---
 
+## &nbsp;Credits & References
+
+This project builds on ideas from multiple areas of complexity science, information theory, and computational systems.
+
+The following references were used for conceptual grounding and definitions:
+
+- Cellular Automaton - foundational model for discrete dynamical systems  
+  [Wikipedia: Cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton)
+
+- Elementary Cellular Automaton - Wolfram’s 1D rule space (Rules 0–255)  
+  [Wikipedia: Elementary cellular automaton](https://en.wikipedia.org/wiki/Elementary_cellular_automaton)
+
+- Hamming Distance - distance between two strings or vectors of equal length
+  [Wikipedia: Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
+
+- Shannon Entropy - expected information content in a probability distribution
+  [Wikipedia: Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_(information_theory))
+
+- Kolmogorov Complexity - algorithmic measure of information content  
+  [Wikipedia: Kolmogorov complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity)
+
+<br>
+
+---
+
 ## &nbsp;License
 
 Released under the [MIT License](LICENSE).
