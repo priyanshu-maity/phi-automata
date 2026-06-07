@@ -48,23 +48,49 @@ class ElementaryCA:
         history = np.empty((steps + 1, width), dtype=state.dtype)
         history[0] = state
 
-        for step in range(1, steps + 1):
-            if self.boundary == 'fixed':
-                left = np.zeros_like(state)
-                right = np.zeros_like(state)
-
-                left[1:] = state[:-1]
-                right[:-1] = state[1:]
-            else:
-                left = np.roll(state, 1)
-                right = np.roll(state, -1)
-
-            neighborhood_codes = 4 * left + 2 * state + right
-            state = self.rule_lookup[neighborhood_codes]
-
-            history[step] = state
+        for i in range(1, steps + 1):
+            history[i] = self.step(history[i - 1])
 
         return history
+
+    def step(self, state: NDArray | list) -> NDArray:
+        """
+        Compute the next generation of the cellular automaton.
+
+        The transition is applied simultaneously to every cell using
+        the automaton's rule and boundary condition.
+
+        Args:
+            state:
+                One-dimensional binary state vector.
+
+        Returns:
+            The next generation as a binary NumPy array.
+
+        Raises:
+            ValueError:
+                If the state is not one-dimensional or contains values
+                other than 0 and 1.
+        """
+
+        if isinstance(state, list):
+            state = np.asarray(state)
+
+        if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
+            raise ValueError("state must ba a one dimensional numpy array or list with values 0 and 1")
+
+        if self.boundary == 'fixed':
+            left = np.zeros_like(state)
+            right = np.zeros_like(state)
+
+            left[1:] = state[:-1]
+            right[:-1] = state[1:]
+        else:
+            left = np.roll(state, 1)
+            right = np.roll(state, -1)
+
+        neighborhood_codes = 4 * left + 2 * state + right
+        return self.rule_lookup[neighborhood_codes]
 
     def _generate_rule_lookup(self) -> NDArray:
         rule_lookup = np.zeros(8, dtype=np.uint8)
