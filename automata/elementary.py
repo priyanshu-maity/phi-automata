@@ -1,6 +1,8 @@
 import numpy as np
 from typing import Literal
 
+from metrics.lambda_parameter import compute_lambda
+
 
 class ElementaryCA:
     def __init__(self, rule: int):
@@ -9,6 +11,7 @@ class ElementaryCA:
 
         self.rule = rule
         self.rule_lookup = self._generate_rule_lookup()
+        self.lambda_ = compute_lambda(self.rule)
 
     def run(
         self,
