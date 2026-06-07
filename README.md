@@ -1,11 +1,5 @@
 <div align="center">
 
-<br>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Mono&size=13&duration=3000&pause=2000&color=8B5CF6&center=true&vCenter=true&width=600&lines=complexity+%E2%86%92+emergence+%E2%86%92+cognition" alt="tagline" />
-
-<br>
-
 # Φ - Automata
 
 <p><em>An Observatory for Complexity at the Edge of Chaos</em></p>
