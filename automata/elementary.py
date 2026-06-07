@@ -1,25 +1,23 @@
 import numpy as np
+from numpy.typing import NDArray
 from typing import Literal
 
 from metrics.lambda_parameter import compute_lambda
 
 
 class ElementaryCA:
-    def __init__(self, rule: int):
+    def __init__(self, rule: int, boundary: Literal['periodic', 'fixed'] = 'fixed'):
         if not (0 <= rule <= 255):
             raise ValueError("rule must be an integer between 0 and 255.")
+        if boundary not in ('periodic', 'fixed'):
+            raise ValueError("boundary can be either 'fixed' or 'periodic'.")
 
         self.rule = rule
+        self.boundary = boundary
         self.rule_lookup = self._generate_rule_lookup()
         self.lambda_ = compute_lambda(self.rule)
 
-    def run(
-        self,
-        width: int,
-        steps: int,
-        boundary: Literal['periodic', 'fixed'] = 'fixed',
-        seed: Literal['single', 'random'] = 'single',
-    ) -> np.ndarray:
+    def run(self, width: int, steps: int, seed: Literal['single', 'random'] = 'single') -> NDArray:
         """
         Simulate an elementary cellular automaton.
 
@@ -51,19 +49,15 @@ class ElementaryCA:
         history[0] = state
 
         for step in range(1, steps + 1):
-            if boundary == 'fixed':
+            if self.boundary == 'fixed':
                 left = np.zeros_like(state)
                 right = np.zeros_like(state)
 
                 left[1:] = state[:-1]
                 right[:-1] = state[1:]
-
-            elif boundary == 'periodic':
+            else:
                 left = np.roll(state, 1)
                 right = np.roll(state, -1)
-
-            else:
-                raise ValueError("boundary can be either 'fixed' or 'periodic'.")
 
             neighborhood_codes = 4 * left + 2 * state + right
             state = self.rule_lookup[neighborhood_codes]
@@ -72,7 +66,7 @@ class ElementaryCA:
 
         return history
 
-    def _generate_rule_lookup(self) -> np.ndarray:
+    def _generate_rule_lookup(self) -> NDArray:
         rule_lookup = np.zeros(8, dtype=np.uint8)
         for i in range(8):
             rule_lookup[i] = (self.rule >> i) & 1
