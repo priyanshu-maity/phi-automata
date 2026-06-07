@@ -45,8 +45,33 @@ class ElementaryCA:
         else:
             raise ValueError("seed can be either 'single' or 'random'.")
 
-        history = np.empty((steps + 1, width), dtype=state.dtype)
-        history[0] = state
+        return self.evolve(state, steps)
+
+    def evolve(self, initial_state: NDArray, steps: int) -> NDArray:
+        """
+        Evolve a cellular automaton from a given initial state.
+
+        Args:
+            initial_state:
+                One-dimensional binary state vector.
+
+            steps:
+                Number of generations to compute.
+
+        Returns:
+            A two-dimensional array of shape
+            (steps + 1, width), where the first row is the
+            initial state and each subsequent row is the next
+            generation.
+        """
+
+        initial_state = np.asarray(initial_state)
+
+        if initial_state.ndim != 1 or not np.all(np.isin(initial_state, [0, 1])):
+            raise ValueError("initial_state must ba a one dimensional numpy array or list with values 0 and 1")
+
+        history = np.empty((steps + 1, len(initial_state)), dtype=initial_state.dtype)
+        history[0] = initial_state
 
         for i in range(1, steps + 1):
             history[i] = self.step(history[i - 1])
@@ -73,8 +98,7 @@ class ElementaryCA:
                 other than 0 and 1.
         """
 
-        if isinstance(state, list):
-            state = np.asarray(state)
+        state = np.asarray(state)
 
         if state.ndim != 1 or not np.all(np.isin(state, [0, 1])):
             raise ValueError("state must ba a one dimensional numpy array or list with values 0 and 1")
