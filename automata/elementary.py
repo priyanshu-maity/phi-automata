@@ -26,7 +26,6 @@ class ElementaryCA:
         Args:
             width: Number of cells in each generation.
             steps: Number of generations to evolve.
-            boundary: Boundary condition ('fixed' or 'periodic').
             seed: Initial state ('single' or 'random').
 
         Returns:
