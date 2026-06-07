@@ -60,7 +60,7 @@ class ElementaryCA:
         """
 
         initial_state = np.asarray(initial_state)
-        self._validate_state(initial_state)
+        self.validate_state(initial_state)
 
         history = np.empty((steps + 1, len(initial_state)), dtype=initial_state.dtype)
         history[0] = initial_state
@@ -91,7 +91,7 @@ class ElementaryCA:
         """
 
         state = np.asarray(state)
-        self._validate_state(state)
+        self.validate_state(state)
 
         if self.boundary == 'fixed':
             left = np.zeros_like(state)
