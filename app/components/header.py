@@ -5,9 +5,26 @@ from dash_iconify import DashIconify
 def create_header():
     return dmc.Group(
         [
-            dmc.Title(
-                "Φ - Automata",
-                order=2,
+            dmc.Stack(
+                [
+                    dmc.Title(
+                        "Φ - Automata",
+                        order=2,
+                    ),
+
+                    dmc.Text(
+                        "An Observatory for Complexity",
+                        size='xs',
+                    ),
+                ],
+                gap=0,
+            ),
+
+
+            dmc.TextInput(
+                label="Experiment Name:",
+                id='experiment-name-input',
+                value='Untitled Experiment',
             ),
 
             dmc.Select(
@@ -33,7 +50,6 @@ def create_header():
                 leftSection=DashIconify(icon='mdi:play'),
                 color='primary',
                 variant='outline',
-                size='md',
             ),
 
             dmc.Button(
@@ -42,9 +58,11 @@ def create_header():
                 leftSection=DashIconify(icon='bitcoin-icons:grid-outline'),
                 color='primary',
                 variant='outline',
-                size='md',
-                # disabled=True,
+                disabled=True,
             ),
         ],
         justify='space-between',
+        mt='lg',
+        ml='md',
+        mr='md',
     )
