@@ -13,14 +13,14 @@ app.layout = dmc.MantineProvider(
     forceColorScheme='dark',
     theme=json.loads((Path(__file__).resolve().parent / 'theme.json').read_text()),
     children=[
-        dmc.Container(
+        dmc.Stack(
             [
                 create_header(),
                 dmc.Divider(
-                    size='xs'
+                    size='xs',
                 ),
             ],
-            fluid=True,
+            gap=0,
         ),
     ],
 )
