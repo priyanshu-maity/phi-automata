@@ -1,23 +1,27 @@
 import json
+from pathlib import Path
+
 from dash import Dash
 import dash_mantine_components as dmc
 
-from components.header import create_header
+from app.components.header import create_header
 
 
 app = Dash(__name__)
 
 app.layout = dmc.MantineProvider(
     forceColorScheme='dark',
-    theme=json.load(open('theme.json')),
+    theme=json.loads((Path(__file__).resolve().parent / 'theme.json').read_text()),
     children=[
         dmc.Container(
             [
                 create_header(),
-
+                dmc.Divider(
+                    size='xs'
+                ),
             ],
             fluid=True,
-        )
+        ),
     ],
 )
 
