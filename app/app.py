@@ -5,6 +5,7 @@ from dash import Dash
 import dash_mantine_components as dmc
 
 from app.components.header import create_header
+from app.components.control_panel import create_control_panel
 
 
 app = Dash(__name__)
@@ -16,9 +17,12 @@ app.layout = dmc.MantineProvider(
         dmc.Stack(
             [
                 create_header(),
+
                 dmc.Divider(
                     size='xs',
                 ),
+
+                create_control_panel(),
             ],
             gap=0,
         ),
