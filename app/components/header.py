@@ -111,12 +111,12 @@ def create_compare_mode():
                 id='compare-mode-switch',
                 onLabel='ON',
                 offLabel='OFF',
-                size='lg',
+                size='md',
                 radius='xl',
                 withThumbIndicator=False,
             ),
         ],
-        gap=4,
+        gap=0,
     )
 
 
