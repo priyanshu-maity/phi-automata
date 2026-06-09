@@ -188,7 +188,7 @@ def create_header():
             create_actions(),
         ],
         px='md',
-        py='sm',
+        py='xs',
         justify='space-between',
         align='center',
     )
