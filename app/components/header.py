@@ -142,7 +142,7 @@ def create_run_button():
         id='run-button',
         leftSection=DashIconify(
             icon='mdi:play',
-            width=24,
+            width=30,
         ),
         color='primary',
         size='lg',
@@ -157,9 +157,23 @@ def create_batch_run_button():
         id='batch-exp-button',
         leftSection=DashIconify(
             icon='bitcoin-icons:grid-outline',
-            width=24,
+            width=30,
         ),
         color='primary',
+        size='lg',
+        variant='outline',
+        radius='md',
+    )
+
+def create_export_button():
+    return dmc.Button(
+        "EXPORT",
+        id='export-button',
+        leftSection=DashIconify(
+            icon='ph:export',
+            width=30,
+        ),
+        color='secondary.2',
         size='lg',
         variant='outline',
         radius='md',
@@ -171,6 +185,7 @@ def create_actions():
         [
             create_run_button(),
             create_batch_run_button(),
+            create_export_button(),
         ],
         gap='sm',
     )
