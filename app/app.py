@@ -7,6 +7,7 @@ import dash_mantine_components as dmc
 from app.components.header import create_header
 from app.components.control_panel import create_control_panel
 from app.components.metrics_panel import create_metrics_panel
+from app.components.status_bar import create_status_bar
 
 app = Dash(__name__)
 
@@ -31,6 +32,12 @@ app.layout = dmc.MantineProvider(
                     align='stretch',
                     style={'flex': 1},
                 ),
+
+                dmc.Divider(
+                    size='xs',
+                ),
+
+                create_status_bar(),
             ],
             gap=0,
             style={'height': '100vh'},
