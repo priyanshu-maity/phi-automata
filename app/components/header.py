@@ -75,6 +75,7 @@ def create_dataset_selector():
         label="Dataset",
         id='dataset-select',
         value='eca',
+        allowDeselect=False,
         w=320,
         data=[
             {
