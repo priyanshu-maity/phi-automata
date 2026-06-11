@@ -6,35 +6,22 @@ from dash_iconify import DashIconify
 # HEADER
 # --------------------
 
-def get_title():
-    return dmc.Text(
-        "Control Panel",
-        size='lg',
-        fw=500,
-    )
-
-
-def get_collapse_button():
-    return dmc.ActionIcon(
-        DashIconify(
-            icon='ri:arrow-left-double-fill',
-            width=24,
-        ),
-        id='collapse-control-panel-button',
-        variant='subtle',
-        size='md',
-    )
-
-
 def get_control_panel_header():
     return dmc.Group(
         [
-            get_title(),
-            get_collapse_button(),
+            DashIconify(
+                icon='mdi:tune',
+                width=20,
+            ),
+
+            dmc.Text(
+                "Control Panel",
+                size='lg',
+                fw=500,
+            ),
         ],
-        gap=4,
+        gap=8,
         align='center',
-        justify='space-between'
     )
 
 

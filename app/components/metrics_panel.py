@@ -8,35 +8,22 @@ from app.widgets.metrics_card import Metric, create_metrics_card
 # HEADER
 # --------------------
 
-def get_title():
-    return dmc.Text(
-        "Metrics Panel",
-        size='lg',
-        fw=500,
-    )
-
-
-def get_collapse_button():
-    return dmc.ActionIcon(
-        DashIconify(
-            icon='ri:arrow-right-double-fill',
-            width=24,
-        ),
-        id='collapse-metrics-panel-button',
-        variant='subtle',
-        size='md',
-    )
-
-
 def get_metrics_panel_header():
     return dmc.Group(
         [
-            get_title(),
-            get_collapse_button(),
+            DashIconify(
+                icon='mdi:flask-outline',
+                width=20,
+            ),
+
+            dmc.Text(
+                "Metrics Panel",
+                size='lg',
+                fw=500,
+            ),
         ],
-        gap=4,
+        gap=8,
         align='center',
-        justify='space-between'
     )
 
 
