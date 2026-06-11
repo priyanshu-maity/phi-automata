@@ -8,6 +8,8 @@ from app.components.header import create_header
 from app.components.control_panel import create_control_panel
 from app.components.metrics_panel import create_metrics_panel
 from app.components.status_bar import create_status_bar
+from app.components.workspace import create_workspace
+
 
 app = Dash(__name__)
 
@@ -26,8 +28,10 @@ app.layout = dmc.MantineProvider(
                 dmc.Group(
                     [
                         create_control_panel(),
+                        create_workspace(),
                         create_metrics_panel(),
                     ],
+                    gap=0,
                     justify='space-between',
                     align='stretch',
                     style={'flex': 1},
@@ -44,6 +48,7 @@ app.layout = dmc.MantineProvider(
         ),
     ],
 )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
